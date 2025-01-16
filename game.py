@@ -1,6 +1,7 @@
 from player import *
 from room import *
-
+from character import *
+from item import *
 
 class Game():
     def __init__(self):
@@ -12,7 +13,7 @@ class Game():
     def grid(self, player):
         print("INSTANTIATE GRID")
 
-        rooms = [start_room, empty_room]
+        rooms = [start_room, cole_farm]
 
         for room in rooms:
             if player.pos_x == room.pos_x and player.pos_y == room.pos_y:
@@ -37,6 +38,7 @@ class Game():
 
     def main_loop(self, player):
         self.status()
+        player.create()
         while True:
             self.grid(player)
             player.status()
@@ -45,16 +47,6 @@ class Game():
 
 # INSTANCE GAME
 game = Game()
-
-# INSTANCE PLAYER
-player = Player()
-
-# ROOMS    name, desc, pos_x, pos_y
-start_room = Room("START ROOM", "THIS IS THE STARTING ROOM", 0, 0)
-empty_room = Room("EMPTY ROOM", "THIS IS THE STARTING ROOM", 0, 1)
-
-# RUN GAME GRID METHOD
-game.grid(player)
 
 # RUN GAME MAIN LOOP
 game.main_loop(player)
